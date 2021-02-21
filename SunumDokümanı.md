@@ -8,7 +8,7 @@ Projede tüm fonksiyonlar REST API'lar ile yerine getirilmiştir. Spring framewo
 
 *İlk olarak entity sınıfları oluşturularak, bunlar arasındaki ilişkiler tanımlanmıştır. Bu sınıfların değişkenlerini ve aralarındaki ilişkileri aşağıdaki ER diyagramında görmekteyiz.*
 
-![mybank](C:\Users\Merve\OneDrive\Belgeler\GitHub\kodluyoruz-java-bootcamp-bitirme-projesi-MerveAltunay\mybank.jpeg)
+![mybank](https://user-images.githubusercontent.com/76403911/107887420-055f6180-6f17-11eb-8ddc-c673075e9437.jpeg)
 
 
 
