@@ -7,7 +7,7 @@ import lombok.Setter;
 @Setter
 public class CreateCustomerRequest {
 
-    private long citizenshipNumber;
+    private String citizenshipNumber;
 
     private String name;
 

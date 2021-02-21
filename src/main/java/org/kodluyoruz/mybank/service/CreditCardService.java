@@ -29,25 +29,25 @@ import java.util.List;
 public class CreditCardService {
 
     @Autowired
-    private final CreditCardRepository creditCardRepository;
+    private CreditCardRepository creditCardRepository;
 
     @Autowired
-    private final CustomerRepository customerRepository;
+    private CustomerRepository customerRepository;
 
     @Autowired
-    private final TransactionRepository transactionRepository;
+    private TransactionRepository transactionRepository;
 
     @Autowired
-    private final DemandAccountRepository demandAccountRepository;
+    private DemandAccountRepository demandAccountRepository;
 
     @Autowired
-    private final SavingsAccountRepository savingsAccountRepository;
+    private SavingsAccountRepository savingsAccountRepository;
 
     @Autowired
-    private final DebitCardRepository debitCardRepository;
+    private DebitCardRepository debitCardRepository;
 
     @Autowired
-    private final CardStatementRepository cardStatementRepository;
+    private CardStatementRepository cardStatementRepository;
 
 
     public CreditCardService(CreditCardRepository creditCardRepository, CustomerRepository customerRepository, TransactionRepository transactionRepository, DemandAccountRepository demandAccountRepository, SavingsAccountRepository savingsAccountRepository, DebitCardRepository debitCardRepository, CardStatementRepository cardStatementRepository) {
@@ -58,6 +58,10 @@ public class CreditCardService {
         this.savingsAccountRepository = savingsAccountRepository;
         this.debitCardRepository = debitCardRepository;
         this.cardStatementRepository = cardStatementRepository;
+    }
+
+    public CreditCardService() {
+
     }
 
     public ResponseEntity<Object> createCreditCard(CreditCardRequest creditCardRequest){

@@ -22,19 +22,19 @@ import java.util.List;
 public class DebitCardService {
 
     @Autowired
-    private final DemandAccountRepository demandAccountRepository;
+    private DemandAccountRepository demandAccountRepository;
 
     @Autowired
-    private final DebitCardRepository debitCardRepository;
+    private DebitCardRepository debitCardRepository;
 
     @Autowired
-    private final CustomerRepository customerRepository;
+    private CustomerRepository customerRepository;
 
     @Autowired
-    private final TransactionRepository transactionRepository;
+    private TransactionRepository transactionRepository;
 
     @Autowired
-    private final CardStatementRepository cardStatementRepository;
+    private CardStatementRepository cardStatementRepository;
 
     public DebitCardService(DemandAccountRepository demandAccountRepository, DebitCardRepository debitCardRepository, CustomerRepository customerRepository, TransactionRepository transactionRepository, CardStatementRepository cardStatementRepository) {
         this.demandAccountRepository = demandAccountRepository;
@@ -42,6 +42,10 @@ public class DebitCardService {
         this.customerRepository = customerRepository;
         this.transactionRepository = transactionRepository;
         this.cardStatementRepository = cardStatementRepository;
+    }
+
+    public DebitCardService() {
+
     }
 
     public ResponseEntity<Object> createDebitCard(DebitCardRequest debitCardRequest) {

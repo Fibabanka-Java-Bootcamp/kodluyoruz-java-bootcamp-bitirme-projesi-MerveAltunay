@@ -32,34 +32,34 @@ public class CustomerController{
     }
 
     @GetMapping("/{citizenshipNumber}")
-    public Customer getCustomer(@PathVariable long citizenshipNumber) {
+    public Customer getCustomer(@PathVariable String citizenshipNumber) {
 
         return customerService.findByCitizenshipNumber(citizenshipNumber);
     }
 
     @PutMapping("update/mail/{citizenshipNumber}")
-    public ResponseEntity<Object> updateCustomerMail(@RequestBody UpdateEmail email, @PathVariable long citizenshipNumber){
+    public ResponseEntity<Object> updateCustomerMail(@RequestBody UpdateEmail email, @PathVariable String citizenshipNumber){
 
         return customerService.updateCustomerMail(email,citizenshipNumber);
 
     }
 
     @PutMapping("update/address/{citizenshipNumber}")
-    public ResponseEntity<Object> updateAddress(@RequestBody CreateAddressRequest addressRequest, @PathVariable long citizenshipNumber){
+    public ResponseEntity<Object> updateAddress(@RequestBody CreateAddressRequest addressRequest, @PathVariable String citizenshipNumber){
 
         return customerService.updateCustomerAddress(addressRequest,citizenshipNumber);
 
     }
 
     @PutMapping("update/phoneNumber/{citizenshipNumber}")
-    public ResponseEntity<Object> updatePhone(@RequestBody UpdatePhoneNumber number, @PathVariable long citizenshipNumber){
+    public ResponseEntity<Object> updatePhone(@RequestBody UpdatePhoneNumber number, @PathVariable String citizenshipNumber){
 
         return customerService.updateCustomerPhone(number,citizenshipNumber);
 
     }
 
     @DeleteMapping("/delete/{citizenshipNumber}")
-    public ResponseEntity<Object> deleteCustomer(@PathVariable long citizenshipNumber) {
+    public ResponseEntity<Object> deleteCustomer(@PathVariable String citizenshipNumber) {
 
         return customerService.deleteCustomer(citizenshipNumber);
     }

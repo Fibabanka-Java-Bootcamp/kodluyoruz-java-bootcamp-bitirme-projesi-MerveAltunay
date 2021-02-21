@@ -22,7 +22,7 @@ public class Customer {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long customerId;
 
-    private long citizenshipNumber;
+    private String citizenshipNumber;
     private String name;
     private String surname;
     private String email;

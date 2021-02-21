@@ -30,22 +30,26 @@ import java.util.Optional;
 public class DemandAccountService {
 
     @Autowired
-    private final DemandAccountRepository demandAccountRepository;
+    private DemandAccountRepository demandAccountRepository;
 
     @Autowired
-    private final CustomerRepository customerRepository;
+    private CustomerRepository customerRepository;
 
     @Autowired
-    private final TransactionRepository transactionRepository;
+    private TransactionRepository transactionRepository;
 
     @Autowired
-    private final SavingsAccountRepository savingsRepository;
+    private SavingsAccountRepository savingsRepository;
 
     public DemandAccountService(DemandAccountRepository demandAccountRepository, CustomerRepository customerRepository, TransactionRepository transactionRepository, SavingsAccountRepository savingsRepository) {
         this.demandAccountRepository = demandAccountRepository;
         this.customerRepository = customerRepository;
         this.transactionRepository = transactionRepository;
         this.savingsRepository = savingsRepository;
+    }
+
+    public DemandAccountService() {
+
     }
 
     public ResponseEntity<Object> createDemandAccount(CreateAccountRequest createAccountRequest){

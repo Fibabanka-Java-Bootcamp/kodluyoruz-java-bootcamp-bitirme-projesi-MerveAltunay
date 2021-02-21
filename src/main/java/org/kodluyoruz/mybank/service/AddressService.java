@@ -11,7 +11,7 @@ import java.util.List;
 public class AddressService {
 
     @Autowired
-    private final AddressRepository addressRepository;
+    private AddressRepository addressRepository;
 
     public AddressService(AddressRepository addressRepository) {
 

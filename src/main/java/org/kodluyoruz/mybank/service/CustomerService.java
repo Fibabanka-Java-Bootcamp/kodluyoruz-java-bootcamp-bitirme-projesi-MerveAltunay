@@ -23,13 +23,13 @@ import java.util.List;
 public class CustomerService {
 
     @Autowired
-    private final CustomerRepository customerRepository;
+    private CustomerRepository customerRepository;
 
     @Autowired
-    private final DemandAccountRepository demandAccountRepository;
+    private DemandAccountRepository demandAccountRepository;
 
     @Autowired
-    private final SavingsAccountRepository savingsAccountRepository;
+    private SavingsAccountRepository savingsAccountRepository;
 
     public CustomerService(CustomerRepository customerRepository, DemandAccountRepository demandAccountRepository, SavingsAccountRepository savingsAccountRepository) {
 
@@ -38,16 +38,18 @@ public class CustomerService {
         this.savingsAccountRepository = savingsAccountRepository;
     }
 
-    public ResponseEntity<Object> createCustomer(CreateCustomerRequest customerRequest){
+    public CustomerService() {
 
-        String number = String.valueOf(customerRequest.getCitizenshipNumber());
+    }
+
+    public ResponseEntity<Object> createCustomer(CreateCustomerRequest customerRequest){
 
         Customer customer = customerRepository.findByCitizenshipNumber(customerRequest.getCitizenshipNumber());
 
         if(customer != null){
             return ResponseEntity.status(HttpStatus.METHOD_NOT_ALLOWED).body("There is a customer with this number.You can't register again");
         }
-        if(number.length() != 11){
+        if(customerRequest.getCitizenshipNumber().length() != 11){
             return ResponseEntity.status(HttpStatus.METHOD_NOT_ALLOWED).body("Citizenship number must be 11 in length");
         }
 
@@ -75,12 +77,12 @@ public class CustomerService {
         return customerRepository.findAll();
     }
 
-    public Customer findByCitizenshipNumber(long citizenshipNumber) {
+    public Customer findByCitizenshipNumber(String citizenshipNumber) {
 
         return customerRepository.findByCitizenshipNumber(citizenshipNumber);
     }
 
-    public ResponseEntity<Object> updateCustomerAddress(CreateAddressRequest request, long citizenshipNumber){
+    public ResponseEntity<Object> updateCustomerAddress(CreateAddressRequest request, String citizenshipNumber){
 
         Customer customer = customerRepository.findByCitizenshipNumber(citizenshipNumber);
 
@@ -101,7 +103,7 @@ public class CustomerService {
 
     }
 
-    public ResponseEntity<Object> updateCustomerPhone(UpdatePhoneNumber phoneNumber, long citizenshipNumber){
+    public ResponseEntity<Object> updateCustomerPhone(UpdatePhoneNumber phoneNumber, String citizenshipNumber){
 
         Customer customer = customerRepository.findByCitizenshipNumber(citizenshipNumber);
 
@@ -113,9 +115,8 @@ public class CustomerService {
         customerRepository.save(customer);
         return ResponseEntity.status(HttpStatus.OK).body("Customer phone number is updated");
 
-
     }
-    public ResponseEntity<Object> updateCustomerMail(UpdateEmail email, long citizenshipNumber){
+    public ResponseEntity<Object> updateCustomerMail(UpdateEmail email, String citizenshipNumber){
 
         Customer customer = customerRepository.findByCitizenshipNumber(citizenshipNumber);
 
@@ -129,7 +130,7 @@ public class CustomerService {
 
     }
 
-    public ResponseEntity<Object> deleteCustomer(long citizenshipNumber) {
+    public ResponseEntity<Object> deleteCustomer(String citizenshipNumber) {
 
         Customer customer = customerRepository.findByCitizenshipNumber(citizenshipNumber);
 
